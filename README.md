@@ -17,8 +17,8 @@ Claude Code `.claude` folder template — from idea to shipping code.
 │   ├── e2e-runner.md
 │   ├── doc-updater.md
 │   └── refactor-cleaner.md
-├── commands/              # 10 workflow commands
-│   └── yc/               # 10 workflow commands (yc: namespace)
+├── commands/              # 11 workflow commands
+│   └── yc/               # 11 workflow commands (yc: namespace)
 │       ├── brainstorm.md  # Ideation → Spec + Decisions
 │       ├── spec.md        # Revise existing spec
 │       ├── plan.md        # Architecture + Implementation plan

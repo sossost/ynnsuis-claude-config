@@ -230,7 +230,8 @@ This command produces spec + decisions documents. It does NOT:
 - Include architecture patterns, pseudo-code, or folder structure
 
 **Next Steps:**
-- `/yc:plan` - Create phased implementation plan (adds architecture + pseudo-code to decisions)
-- `/yc:tdd` - Implement with test-driven development
-- `/yc:brainstorm` again - Revise if spec needs refinement
-- `/yc:spec` - Edit or update the spec document later
+- `/yc:plan` - Create implementation plan (architecture + pseudo-code + phases)
+- `/yc:impl` - Implement following the plan (default, after /yc:plan)
+- `/yc:tdd` - Implement with strict test-first (logic-heavy code only)
+- `/yc:spec` - Revise spec if requirements change
+- `/yc:brainstorm` again - Start fresh if direction changed
