@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "tool == \"Bash\" && tool_input.command matches \"(npm run dev|pnpm( run)? dev|yarn dev|bun run dev)\"",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "#!/bin/bash\necho '[Hook] BLOCKED: Dev server must run in tmux for log persistence' >&2\necho '[Hook] Use: tmux new-session -d -s dev \"npm run dev\"' >&2\necho '[Hook] Then: tmux attach -t dev' >&2\nexit 1"
+          }
+        ]
+      },
+      {
+        "matcher": "tool == \"Bash\" && tool_input.command matches \"(npm (install|test)|pnpm (install|test)|yarn (install|test)|cargo build|make|docker|pytest|vitest|playwright)\"",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "#!/bin/bash\nif [ -z \"$TMUX\" ]; then\n  echo '[Hook] Consider running in tmux for session persistence' >&2\n  echo '[Hook] tmux new -s dev  |  tmux attach -t dev' >&2\nfi\ncat"
+          }
+        ]
+      },
+      {
+        "matcher": "tool == \"Bash\" && tool_input.command matches \"git push\"",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "#!/bin/bash\necho '[Hook] Review changes before push...' >&2\necho '[Hook] Verify: git log --oneline -5 && git diff --stat origin/main..HEAD' >&2\ncat"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "tool == \"Bash\"",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "#!/bin/bash\n# Log PR creation details\ninput=$(cat)\ncmd=$(echo \"$input\" | jq -r '.tool_input.command // \"\"')\n\nif echo \"$cmd\" | grep -qE 'gh pr create'; then\n  output=$(echo \"$input\" | jq -r '.tool_output.output // \"\"')\n  pr_url=$(echo \"$output\" | grep -oE 'https://github.com/[^/]+/[^/]+/pull/[0-9]+')\n  if [ -n \"$pr_url\" ]; then\n    echo \"[Hook] PR created: $pr_url\" >&2\n    echo \"[Hook] Check CI: gh pr checks $(echo \"$pr_url\" | grep -oE '[0-9]+$')\" >&2\n  fi\nfi\n\necho \"$input\""
+          }
+        ]
+      },
+      {
+        "matcher": "tool == \"Edit\" && tool_input.file_path matches \"\\\\.(ts|tsx|js|jsx)$\"",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "#!/bin/bash\n# Auto-format with Prettier after editing JS/TS files\ninput=$(cat)\nfile_path=$(echo \"$input\" | jq -r '.tool_input.file_path // \"\"')\n\nif [ -n \"$file_path\" ] && [ -f \"$file_path\" ]; then\n  if command -v npx >/dev/null 2>&1; then\n    npx --yes prettier --write \"$file_path\" 2>/dev/null | head -3 >&2 || true\n  fi\nfi\n\necho \"$input\""
+          }
+        ]
+      },
+      {
+        "matcher": "tool == \"Edit\" && tool_input.file_path matches \"\\\\.(ts|tsx)$\"",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "#!/bin/bash\n# TypeScript check after editing TS files\ninput=$(cat)\nfile_path=$(echo \"$input\" | jq -r '.tool_input.file_path // \"\"')\n\nif [ -n \"$file_path\" ] && [ -f \"$file_path\" ]; then\n  dir=$(dirname \"$file_path\")\n  root=\"$dir\"\n  while [ \"$root\" != \"/\" ] && [ ! -f \"$root/tsconfig.json\" ]; do\n    root=$(dirname \"$root\")\n  done\n  if [ -f \"$root/tsconfig.json\" ]; then\n    cd \"$root\" && npx tsc --noEmit --pretty false 2>&1 | grep \"$file_path\" | head -10 >&2 || true\n  fi\nfi\n\necho \"$input\""
+          }
+        ]
+      },
+      {
+        "matcher": "tool == \"Edit\" && tool_input.file_path matches \"\\\\.(ts|tsx|js|jsx)$\"",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "#!/bin/bash\n# Warn about console.log in edited files\ninput=$(cat)\nfile_path=$(echo \"$input\" | jq -r '.tool_input.file_path // \"\"')\n\nif [ -n \"$file_path\" ] && [ -f \"$file_path\" ]; then\n  matches=$(grep -n 'console\\.log' \"$file_path\" 2>/dev/null || true)\n  if [ -n \"$matches\" ]; then\n    echo \"[Hook] WARNING: console.log found in $file_path\" >&2\n    echo \"$matches\" | head -5 >&2\n    echo \"[Hook] Remove before committing\" >&2\n  fi\nfi\n\necho \"$input\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "#!/bin/bash\n# Final audit: check for console.log in all modified files\nif git rev-parse --git-dir > /dev/null 2>&1; then\n  modified=$(git diff --name-only HEAD 2>/dev/null | grep -E '\\.(ts|tsx|js|jsx)$' || true)\n  if [ -n \"$modified\" ]; then\n    found=false\n    while IFS= read -r file; do\n      if [ -f \"$file\" ] && grep -q 'console\\.log' \"$file\" 2>/dev/null; then\n        echo \"[Hook] WARNING: console.log in $file\" >&2\n        found=true\n      fi\n    done <<< \"$modified\"\n    if [ \"$found\" = true ]; then\n      echo '[Hook] Remove console.log statements before committing' >&2\n    fi\n  fi\nfi\ncat"
+          }
+        ]
+      }
+    ]
+  }
+}
