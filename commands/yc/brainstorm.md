@@ -51,25 +51,44 @@ Keep asking until you have a clear picture of:
 
 Once the problem is clear, surface decision points.
 
-**ALWAYS mark a recommended option.** Use context (project scale, existing stack, common patterns) to pick the best default. The user can override.
+**ALWAYS use the AskUserQuestion tool for decision points.** Present options as interactive selectable choices, not inline text.
 
+Format rules:
+- **First option = recommended**, with "(추천)" appended to the label
+- Each option's description includes pros and cons
+- Use the question field for context about what's being decided
+- header should be a short topic label (max 12 chars)
+
+Example:
 ```
-User: "Theme should persist"
-You: "Where should theme preference be stored?
-
-      A: localStorage (Recommended) — simple, client-only, no account sync
-      B: Database — syncs across devices, needs auth
-      C: Cookie — works with SSR, limited size
-
-      → A를 추천합니다. 클라이언트 전용 프로젝트에서 가장 단순하고 충분합니다.
-        다른 옵션을 원하시면 말씀해주세요."
+AskUserQuestion({
+  questions: [{
+    question: "테마 설정을 어디에 저장할까요?",
+    header: "저장 방식",
+    options: [
+      {
+        label: "localStorage (추천)",
+        description: "장점: 단순 구현, 빠른 접근. 단점: 디바이스 간 동기화 불가."
+      },
+      {
+        label: "Database",
+        description: "장점: 디바이스 간 동기화. 단점: 인증 필요, 구현 복잡."
+      },
+      {
+        label: "Cookie",
+        description: "장점: SSR 호환. 단점: 4KB 용량 제한."
+      }
+    ],
+    multiSelect: false
+  }]
+})
 ```
 
 For each decision:
-- Present 2-3 options with brief pros/cons
-- **Always include a recommended option with (Recommended) label**
-- Explain why the recommendation fits this project
-- Let the user decide — recommendation is a starting point, not a mandate
+- **Always use AskUserQuestion tool** — not inline text options
+- First option is the recommended choice with "(추천)" label
+- Description format: "장점: [pros]. 단점: [cons]."
+- Let the user select — recommendation is a starting point, not a mandate
 - Record the decision with reasoning
 
 **Decision scope for this phase (user-level choices):**
