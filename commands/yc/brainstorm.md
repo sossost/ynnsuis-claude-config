@@ -157,7 +157,7 @@ After confirmation, generate BOTH documents:
 
 #### 02-decisions.md
 
-This document is created here and **extended by `/plan`** with architecture details.
+This document is created here and **extended by `/yc:plan`** with architecture details.
 
 Each decision includes options with pros/cons for traceability.
 
@@ -230,7 +230,7 @@ This command produces spec + decisions documents. It does NOT:
 - Include architecture patterns, pseudo-code, or folder structure
 
 **Next Steps:**
-- `/plan` - Create phased implementation plan (adds architecture + pseudo-code to decisions)
-- `/tdd` - Implement with test-driven development
-- `/brainstorm` again - Revise if spec needs refinement
-- `/spec` - Edit or update the spec document later
+- `/yc:plan` - Create phased implementation plan (adds architecture + pseudo-code to decisions)
+- `/yc:tdd` - Implement with test-driven development
+- `/yc:brainstorm` again - Revise if spec needs refinement
+- `/yc:spec` - Edit or update the spec document later

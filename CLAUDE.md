@@ -20,7 +20,7 @@ When the user shares an idea (even vague):
 - Suggest comparable patterns or prior art when relevant
 - Summarize what you understand back to the user before proceeding
 
-### 2. Spec & Decisions (via /brainstorm)
+### 2. Spec & Decisions (via /yc:brainstorm)
 
 Through Socratic dialogue:
 - Explore the problem, clarify scope, surface decision points
@@ -124,15 +124,15 @@ All pre-implementation documents are saved to `docs/features/[feature-name]/`:
 
 ```
 docs/features/theme-system/
-├── 01-spec.md            ← /brainstorm output (what to build + behavior)
-├── 02-decisions.md       ← /brainstorm output (technical choices + reasoning)
-└── 03-plan.md            ← /plan output (implementation phases)
+├── 01-spec.md            ← /yc:brainstorm output (what to build + behavior)
+├── 02-decisions.md       ← /yc:brainstorm + /yc:plan (decisions + architecture)
+└── 03-plan.md            ← /yc:plan output (implementation phases)
 ```
 
 - `[feature-name]` is derived from the topic in kebab-case
-- `/brainstorm` produces both spec and decisions through a single dialogue
-- `/spec` is for revising existing specs when requirements change
-- `/plan` creates the implementation plan after spec is confirmed
+- `/yc:brainstorm` produces both spec and decisions through a single dialogue
+- `/yc:spec` is for revising existing specs when requirements change
+- `/yc:plan` creates the implementation plan and adds architecture to decisions
 - This is the single source of truth for what we agreed to build
 
 ## Rules

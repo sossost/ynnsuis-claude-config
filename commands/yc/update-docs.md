@@ -16,7 +16,7 @@ Generate and update documentation from the actual codebase.
 
 ## When to Use
 
-Use `/update-docs` when:
+Use `/yc:update-docs` when:
 - New features or modules have been added
 - API endpoints have changed
 - Dependencies have been added or removed
@@ -95,9 +95,9 @@ Sync with current state:
 
 ## Integration with Other Commands
 
-- After `/plan` and implementation to document new features
-- After `/refactor-clean` to remove references to deleted code
-- Before `/code-review` to ensure docs are current
+- After `/yc:plan` and implementation to document new features
+- After `/yc:refactor-clean` to remove references to deleted code
+- Before `/yc:code-review` to ensure docs are current
 
 ## Related Agent
 

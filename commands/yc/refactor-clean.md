@@ -16,7 +16,7 @@ Remove dead code and consolidate duplicates safely.
 
 ## When to Use
 
-Use `/refactor-clean` when:
+Use `/yc:refactor-clean` when:
 - Codebase has accumulated dead code over time
 - Dependencies are bloated
 - Multiple implementations of the same thing exist
@@ -103,9 +103,9 @@ When multiple implementations exist:
 
 ## Integration with Other Commands
 
-- `/test-coverage` to ensure adequate coverage before cleanup
-- `/build-fix` if cleanup breaks the build
-- `/code-review` to review cleanup changes
+- `/yc:test-coverage` to ensure adequate coverage before cleanup
+- `/yc:build-fix` if cleanup breaks the build
+- `/yc:code-review` to review cleanup changes
 
 ## Related Agent
 

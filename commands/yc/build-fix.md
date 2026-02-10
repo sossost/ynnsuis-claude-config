@@ -16,7 +16,7 @@ Fix build and type errors incrementally with minimal changes.
 
 ## When to Use
 
-Use `/build-fix` when:
+Use `/yc:build-fix` when:
 - `npm run build` or `tsc` fails
 - TypeScript type errors appear after changes
 - Lint errors block the build
@@ -55,7 +55,7 @@ For each error:
 - A fix introduces MORE errors than it solves
 - Same error persists after 3 attempts
 - User requests pause
-- Fix requires architectural changes (escalate to `/plan`)
+- Fix requires architectural changes (escalate to `/yc:plan`)
 
 ### Step 5: Report
 
@@ -98,9 +98,9 @@ For each error:
 
 ## Integration with Other Commands
 
-- `/code-review` after build is green
-- `/tdd` if errors reveal missing test coverage
-- `/plan` if fix requires significant changes
+- `/yc:code-review` after build is green
+- `/yc:tdd` if errors reveal missing test coverage
+- `/yc:plan` if fix requires significant changes
 
 ## Related Agent
 

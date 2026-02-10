@@ -17,7 +17,7 @@ Comprehensive security and quality review of uncommitted changes.
 
 ## When to Use
 
-Use `/code-review` when:
+Use `/yc:code-review` when:
 - Before committing changes
 - After completing a feature or bug fix
 - Before creating a pull request
@@ -113,9 +113,9 @@ Use `/code-review` when:
 
 ## Integration with Other Commands
 
-- `/tdd` to fix quality issues with tests
-- `/build-fix` if review changes break the build
-- `/test-coverage` to verify test coverage
+- `/yc:tdd` to fix quality issues with tests
+- `/yc:build-fix` if review changes break the build
+- `/yc:test-coverage` to verify test coverage
 
 ## Related Agent
 

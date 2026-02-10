@@ -16,7 +16,7 @@ Analyze coverage gaps and generate tests to reach target thresholds.
 
 ## When to Use
 
-Use `/test-coverage` when:
+Use `/yc:test-coverage` when:
 - Before creating a pull request
 - After implementing a new feature
 - Coverage CI check is failing
@@ -119,6 +119,6 @@ When generating tests, prioritize:
 
 ## Integration with Other Commands
 
-- `/tdd` for implementing new code with tests from the start
-- `/e2e` for end-to-end coverage of user flows
-- `/code-review` to verify changes before commit
+- `/yc:tdd` for implementing new code with tests from the start
+- `/yc:e2e` for end-to-end coverage of user flows
+- `/yc:code-review` to verify changes before commit

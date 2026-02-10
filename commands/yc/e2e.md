@@ -16,7 +16,7 @@ Generate and run Playwright end-to-end tests for critical user flows.
 
 ## When to Use
 
-Use `/e2e` when:
+Use `/yc:e2e` when:
 - Implementing critical user flows (auth, checkout, onboarding)
 - After significant UI changes
 - Before major releases
@@ -164,10 +164,10 @@ tests/
 
 ## Integration with Other Commands
 
-- `/spec` to define the user flows to test
-- `/tdd` for unit/integration tests
-- `/test-coverage` to verify overall coverage
-- `/code-review` after tests are written
+- `/yc:spec` to define the user flows to test
+- `/yc:tdd` for unit/integration tests
+- `/yc:test-coverage` to verify overall coverage
+- `/yc:code-review` after tests are written
 
 ## Related Agent
 

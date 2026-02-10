@@ -17,7 +17,7 @@ Analyze the codebase, design the architecture, and create an implementation plan
 
 ## When to Use
 
-Use `/plan` when:
+Use `/yc:plan` when:
 - Spec is confirmed and ready for implementation
 - Starting a new feature implementation
 - Making significant architectural changes
@@ -225,9 +225,9 @@ This command produces architecture design + implementation plan. It does NOT:
 - Proceed without explicit approval
 
 **Next Steps:**
-- `/tdd` - Implement using test-driven development
-- `/build-fix` - Fix build errors during implementation
-- `/code-review` - Review completed implementation
+- `/yc:tdd` - Implement using test-driven development
+- `/yc:build-fix` - Fix build errors during implementation
+- `/yc:code-review` - Review completed implementation
 
 ## Plan Quality Checklist
 

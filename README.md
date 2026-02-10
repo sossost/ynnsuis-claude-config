@@ -18,16 +18,17 @@ Claude Code `.claude` folder template — from idea to shipping code.
 │   ├── doc-updater.md
 │   └── refactor-cleaner.md
 ├── commands/              # 10 workflow commands
-│   ├── brainstorm.md      # Ideation → Spec + Decisions
-│   ├── spec.md            # Revise existing spec
-│   ├── plan.md            # Specification → Implementation plan
-│   ├── tdd.md             # Test-driven implementation
-│   ├── code-review.md     # Code quality gate
-│   ├── build-fix.md       # Build error resolution
-│   ├── e2e.md             # E2E test generation
-│   ├── test-coverage.md   # Coverage analysis
-│   ├── refactor-clean.md  # Dead code removal
-│   └── update-docs.md     # Documentation sync
+│   └── yc/               # 10 workflow commands (yc: namespace)
+│       ├── brainstorm.md  # Ideation → Spec + Decisions
+│       ├── spec.md        # Revise existing spec
+│       ├── plan.md        # Architecture + Implementation plan
+│       ├── tdd.md         # Test-driven implementation
+│       ├── code-review.md # Code quality gate
+│       ├── build-fix.md   # Build error resolution
+│       ├── e2e.md         # E2E test generation
+│       ├── test-coverage.md # Coverage analysis
+│       ├── refactor-clean.md # Dead code removal
+│       └── update-docs.md # Documentation sync
 ├── rules/                 # 8 coding rules
 │   ├── coding-style.md    # Toss-level code quality standard
 │   ├── security.md        # OWASP, input validation, secrets
@@ -83,16 +84,16 @@ cp templates/project-claude.md my-project/.claude/CLAUDE.md
 The template is designed around an **Idea → Ship** workflow:
 
 ```
-/brainstorm  →  /plan  →  /tdd  →  /code-review
+/yc:brainstorm  →  /yc:plan  →  /yc:tdd  →  /yc:code-review
 ```
 
 | Phase | Command | Output |
 |-------|---------|--------|
-| Discovery | `/brainstorm` | `docs/features/*/01-spec.md` + `02-decisions.md` |
-| Planning | `/plan` | `docs/features/*/03-plan.md` |
-| Implementation | `/tdd` | Code + tests |
-| Quality | `/code-review` | Review report |
-| Revision | `/spec` | Update existing spec + decisions |
+| Discovery | `/yc:brainstorm` | `docs/features/*/01-spec.md` + `02-decisions.md` |
+| Planning | `/yc:plan` | `docs/features/*/03-plan.md` + updates `02-decisions.md` |
+| Implementation | `/yc:tdd` | Code + tests |
+| Quality | `/yc:code-review` | Review report |
+| Revision | `/yc:spec` | Update existing spec + decisions |
 
 ## Code Quality
 

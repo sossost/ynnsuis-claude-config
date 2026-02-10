@@ -16,7 +16,7 @@ Implement features using strict test-driven development methodology.
 
 ## When to Use
 
-Use `/tdd` when:
+Use `/yc:tdd` when:
 - Implementing new features or functions
 - Adding new components with logic
 - Fixing bugs (write test that reproduces bug first)
@@ -147,7 +147,7 @@ If below 80%, add tests for uncovered branches.
 - Database read → write → verify
 - Component render → interact → verify state
 
-**E2E Tests** (use `/e2e` command):
+**E2E Tests** (use `/yc:e2e` command):
 - Critical user flows end-to-end
 
 ## Coverage Requirements
@@ -179,12 +179,12 @@ If below 80%, add tests for uncovered branches.
 
 ## Integration with Other Commands
 
-- `/brainstorm` or `/spec` first to understand what to build
-- `/plan` to break work into phases
-- `/tdd` to implement each phase
-- `/build-fix` if build errors occur during implementation
-- `/code-review` to review completed implementation
-- `/test-coverage` to verify overall coverage
+- `/yc:brainstorm` or `/yc:spec` first to understand what to build
+- `/yc:plan` to break work into phases
+- `/yc:tdd` to implement each phase
+- `/yc:build-fix` if build errors occur during implementation
+- `/yc:code-review` to review completed implementation
+- `/yc:test-coverage` to verify overall coverage
 
 ## Related Agent
 

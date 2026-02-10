@@ -16,14 +16,14 @@ Review, revise, or extend an existing feature specification.
 
 ## When to Use
 
-Use `/spec` when:
+Use `/yc:spec` when:
 - Requirements changed after initial brainstorm
 - User feedback requires spec updates
 - Scope needs to expand or contract
 - A decision needs to be revisited
 - Adding detail to an underspecified area
 
-**For new features, use `/brainstorm` instead.** This command is for revisions.
+**For new features, use `/yc:brainstorm` instead.** This command is for revisions.
 
 ## How It Works
 
@@ -91,6 +91,6 @@ This command updates spec documents only. It does NOT:
 - Create an implementation plan
 
 **Next Steps:**
-- `/plan` - Re-plan implementation if spec changed significantly
-- `/tdd` - Implement the updated spec
-- `/brainstorm` - Start fresh if the feature direction changed fundamentally
+- `/yc:plan` - Re-plan implementation if spec changed significantly
+- `/yc:tdd` - Implement the updated spec
+- `/yc:brainstorm` - Start fresh if the feature direction changed fundamentally
