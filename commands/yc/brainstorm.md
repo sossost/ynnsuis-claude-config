@@ -27,25 +27,53 @@ docs/features/[feature-name]/
 
 ### Phase 1: Explore (Understand the Problem)
 
-Ask targeted questions to understand:
+**CRITICAL: Ask 2-3 questions at a time, not all at once.**
+
+This is a dialogue, not a survey. Ask a small batch → get answers → dig deeper based on responses → repeat.
+
+Questions to cover (spread across multiple turns):
 - **Who** is the user? What are their goals?
 - **What** problem does this solve? Why now?
 - **Where** does this fit in the existing system?
 - **How** should it behave from the user's perspective?
 - **What if** it fails? What are the edge cases?
 
-Do NOT accept the first answer. Dig deeper:
+**Use AskUserQuestion for questions with clear options:**
 ```
-User: "I want to add notifications"
-You: "What triggers a notification? Who receives it?
-      Is it real-time or batched? What channels — in-app, email, push?
-      What if the user has 1000 unread notifications?"
+AskUserQuestion({
+  questions: [
+    {
+      question: "토글 버튼을 어디에 배치할까요?",
+      header: "토글 위치",
+      options: [
+        { label: "헤더 (추천)", description: "항상 접근 가능. 가장 일반적인 패턴." },
+        { label: "설정 페이지", description: "깔끔하지만 접근성 떨어짐." },
+        { label: "플로팅 버튼", description: "눈에 띄지만 콘텐츠 가릴 수 있음." }
+      ],
+      multiSelect: false
+    },
+    {
+      question: "지원할 테마 모드는?",
+      header: "테마 모드",
+      options: [
+        { label: "Light / Dark (추천)", description: "단순하고 빠른 구현. 대부분의 프로젝트에 충분." },
+        { label: "Light / Dark / System", description: "OS 설정 연동. 구현 약간 복잡." }
+      ],
+      multiSelect: false
+    }
+  ]
+})
 ```
 
-Keep asking until you have a clear picture of:
-- The core user need
-- Key behaviors and interactions
-- Scope boundaries (must-have vs nice-to-have)
+**Use plain text for open-ended questions:**
+- "테마 전환 시 애니메이션이 필요한가요? 필요하다면 어떤 느낌을 원하시나요?"
+- "색상만 바꾸나요, 아니면 폰트/간격 등도 포함하나요?"
+
+**Flow:**
+1. First turn: 2-3 core questions (AskUserQuestion or text)
+2. Based on answers: 2-3 follow-up questions
+3. Dig deeper until the picture is clear
+4. Then move to Phase 2 (Decide)
 
 ### Phase 2: Decide (Resolve Technical Choices)
 
