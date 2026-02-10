@@ -20,7 +20,7 @@ One conversation, two documents:
 ```
 docs/features/[feature-name]/
 ├── 01-spec.md          ← What to build + how it behaves
-└── 02-decisions.md     ← Why we chose what we chose
+└── 02-decisions.md     ← Why we chose what we chose (with pros/cons)
 ```
 
 ## How It Works
@@ -61,9 +61,25 @@ You: "Where should theme preference be stored?
 ```
 
 For each decision:
-- Present 2-3 options with trade-offs
+- Present 2-3 options with pros/cons
 - Let the user decide — never assume
 - Record the decision with reasoning
+
+**Decision scope for this phase (user-level choices):**
+- Feature behavior (what modes, what triggers, what channels)
+- Storage strategy (where to save, how to persist)
+- UI approach (where to place, how to interact)
+- Technology approach (CSS variables, Tailwind, CSS-in-JS)
+- Accessibility level (basic, full, minimal)
+- Scope boundaries (what's in v1, what's deferred)
+
+**NOT in scope for this phase (belongs in /plan):**
+- Code-level implementation details (inline scripts, data attributes, DOM manipulation)
+- Architecture patterns (compound components, provider pattern)
+- Folder structure and file organization
+- Pseudo-code or code flow
+- Migration strategies for existing code
+- Design Rationale sections explaining implementation
 
 ### Phase 3: Confirm (Review Before Output)
 
@@ -143,6 +159,8 @@ After confirmation, generate BOTH documents:
 
 This document is created here and **extended by `/plan`** with architecture details.
 
+Each decision includes options with pros/cons for traceability.
+
 ```markdown
 # Decisions: [Feature Name]
 
@@ -150,9 +168,32 @@ This document is created here and **extended by `/plan`** with architecture deta
 
 ## Technical Decisions
 
-| # | Decision | Options Considered | Chosen | Reason |
-|---|----------|--------------------|--------|--------|
-| 1 | [topic] | A: [option], B: [option], C: [option] | B | [why] |
+### 1. [Decision Topic]
+
+| Option | Pros | Cons |
+|--------|------|------|
+| A: [option] | [advantages] | [disadvantages] |
+| B: [option] | [advantages] | [disadvantages] |
+| C: [option] | [advantages] | [disadvantages] |
+
+**Chosen:** [option]
+**Reason:** [why this option fits best]
+
+---
+
+### 2. [Decision Topic]
+
+| Option | Pros | Cons |
+|--------|------|------|
+| A: [option] | [advantages] | [disadvantages] |
+| B: [option] | [advantages] | [disadvantages] |
+
+**Chosen:** [option]
+**Reason:** [why]
+
+---
+
+(repeat for each decision)
 
 <!-- Architecture section will be added by /plan after codebase analysis -->
 ```
@@ -185,9 +226,11 @@ This command produces spec + decisions documents. It does NOT:
 - Create file structures or scaffolding
 - Run tests or builds
 - Create an implementation plan
+- Include Design Rationale or implementation explanation sections
+- Include architecture patterns, pseudo-code, or folder structure
 
 **Next Steps:**
-- `/plan` - Create phased implementation plan from this spec
+- `/plan` - Create phased implementation plan (adds architecture + pseudo-code to decisions)
 - `/tdd` - Implement with test-driven development
 - `/brainstorm` again - Revise if spec needs refinement
 - `/spec` - Edit or update the spec document later
