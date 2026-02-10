@@ -141,14 +141,20 @@ After confirmation, generate BOTH documents:
 
 #### 02-decisions.md
 
+This document is created here and **extended by `/plan`** with architecture details.
+
 ```markdown
 # Decisions: [Feature Name]
 
 **Created:** YYYY-MM-DD
 
+## Technical Decisions
+
 | # | Decision | Options Considered | Chosen | Reason |
 |---|----------|--------------------|--------|--------|
 | 1 | [topic] | A: [option], B: [option], C: [option] | B | [why] |
+
+<!-- Architecture section will be added by /plan after codebase analysis -->
 ```
 
 ## Document Output

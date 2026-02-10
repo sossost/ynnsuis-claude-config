@@ -1,62 +1,139 @@
 ---
-description: "Create step-by-step implementation plan from requirements or spec. Assess risks, identify dependencies, break into phases. WAIT for user confirmation before any code."
+description: "Analyze codebase, design architecture, and create implementation plan. Updates decisions with architecture/patterns/pseudo-code. WAIT for user confirmation before any code."
 ---
 
 # Plan Command
 
-Create a comprehensive implementation plan before writing any code.
+Analyze the codebase, design the architecture, and create an implementation plan.
 
 ## What This Command Does
 
-1. **Restate Requirements** - Clarify what needs to be built
-2. **Analyze Codebase** - Understand existing architecture and patterns
-3. **Identify Risks** - Surface potential issues, blockers, and dependencies
-4. **Break Into Phases** - Create ordered, incremental implementation steps
-5. **Wait for Confirmation** - MUST receive user approval before proceeding
+1. **Review Spec** - Load 01-spec.md and 02-decisions.md from /brainstorm
+2. **Analyze Codebase** - Understand existing architecture, patterns, and structure
+3. **Design Architecture** - Decide on structure, patterns, and pseudo-code
+4. **Update Decisions** - Append architecture decisions to 02-decisions.md
+5. **Create Plan** - Break into phased implementation steps
+6. **Wait for Confirmation** - MUST receive user approval before proceeding
 
 ## When to Use
 
 Use `/plan` when:
+- Spec is confirmed and ready for implementation
 - Starting a new feature implementation
 - Making significant architectural changes
-- Working on complex refactoring
 - Multiple files or components will be affected
-- Requirements are defined but implementation path is unclear
 
 ## How It Works
 
-### Step 1: Requirements Restatement
+### Step 1: Review Spec
 
-Restate the requirements in your own words. This catches misunderstandings early.
+Load the existing documents:
+```
+docs/features/[feature-name]/
+├── 01-spec.md
+└── 02-decisions.md
+```
+
+Restate the requirements briefly to confirm understanding:
 
 ```markdown
-## Requirements Restatement
+## Spec Summary
 
 **Goal:** [What we're building and why]
-**Users:** [Who benefits]
-**Success Criteria:** [How we know it's done]
+**Key Behaviors:** [Core interactions]
+**Decisions So Far:** [High-level choices from brainstorm]
 ```
 
 ### Step 2: Codebase Analysis
 
 Explore the existing code to understand:
-- Current architecture and patterns
-- Files that will be modified
+- Current architecture and patterns in use
+- Files and modules that will be affected
 - Dependencies and shared code
+- Existing patterns to follow or extend
 - Test coverage of affected areas
 
-### Step 3: Risk Assessment
+**This step is critical.** Architecture decisions must be grounded in the actual codebase, not hypothetical.
 
-Identify risks by category:
+### Step 3: Architecture Design
 
-| Risk | Level | Mitigation |
-|------|-------|------------|
-| Breaking existing [feature] | HIGH | Write regression tests first |
-| Performance impact on [operation] | MEDIUM | Add benchmark before/after |
-| Missing test coverage in [area] | MEDIUM | Add tests before modifying |
-| Dependency on unreleased [feature] | LOW | Use feature flag |
+Based on codebase analysis, design the implementation structure:
 
-### Step 4: Implementation Plan
+#### Patterns & Structure
+```markdown
+## Architecture
+
+### Pattern: [e.g., Compound Component]
+Reason: [why this pattern fits, what existing code uses it]
+
+### Structure
+```
+src/
+├── components/
+│   └── ThemeToggle/
+│       ├── index.ts
+│       ├── ThemeToggle.tsx
+│       ├── ThemeToggle.test.tsx
+│       └── useTheme.ts
+├── providers/
+│   └── ThemeProvider.tsx
+└── styles/
+    └── theme.css
+```
+```
+
+#### Pseudo-code
+```markdown
+### Core Flow
+
+// ThemeProvider wraps the app
+ThemeProvider
+  → reads initial theme (stored preference OR OS setting)
+  → provides { theme, toggleTheme } via context
+
+// useTheme hook
+useTheme()
+  → returns { theme, toggleTheme, isDark }
+  → toggleTheme flips theme + persists to storage
+
+// ThemeToggle component
+ThemeToggle
+  → uses useTheme()
+  → renders toggle button
+  → calls toggleTheme on click
+```
+
+### Step 4: Update Decisions
+
+**Append architecture decisions to the existing 02-decisions.md.**
+
+Add rows to the decisions table:
+
+```markdown
+| # | Decision | Options Considered | Chosen | Reason |
+|---|----------|--------------------|--------|--------|
+| ... | (existing rows from brainstorm) | ... | ... | ... |
+| N | Component pattern | A: Single component, B: Compound, C: Render props | B | Matches existing Button/Modal patterns |
+| N+1 | State management | A: useState local, B: Context, C: Zustand | B | Theme is app-wide, Context is simplest |
+| N+2 | File structure | A: Flat, B: Feature-based | B | Project already uses feature folders |
+```
+
+Add an Architecture section below the table:
+
+```markdown
+## Architecture
+
+### Structure
+[folder/file structure]
+
+### Core Flow (Pseudo-code)
+[pseudo-code showing how pieces connect]
+
+### Key Interfaces
+[TypeScript interfaces/types for the core abstractions]
+```
+
+### Step 5: Implementation Plan
 
 Break into ordered phases. Each phase should be independently testable.
 
@@ -76,10 +153,9 @@ Break into ordered phases. Each phase should be independently testable.
 **Verify:** All unit tests pass
 
 ### Phase 3: Integration [Estimated: S/M/L]
-- [ ] Wire up API endpoints
-- [ ] Connect frontend components
+- [ ] Wire up API endpoints / connect components
 - [ ] Add integration tests
-**Verify:** Integration tests pass, API responds correctly
+**Verify:** Integration tests pass
 
 ### Phase 4: Polish [Estimated: S/M/L]
 - [ ] Add loading states and error handling
@@ -95,35 +171,36 @@ Break into ordered phases. Each phase should be independently testable.
 ## Estimated Complexity: S / M / L / XL
 ```
 
-### Step 5: Wait for Confirmation
+### Step 6: Risk Assessment
+
+| Risk | Level | Mitigation |
+|------|-------|------------|
+| Breaking existing [feature] | HIGH | Write regression tests first |
+| Performance impact on [operation] | MEDIUM | Add benchmark before/after |
+| Missing test coverage in [area] | MEDIUM | Add tests before modifying |
+
+### Step 7: Wait for Confirmation
 
 **CRITICAL: Do NOT write any code until the user confirms.**
 
-Present the plan and ask:
-- "Does this plan look correct?"
+Present the full plan (architecture + phases) and ask:
+- "Does this architecture make sense?"
 - "Any phases you want to reorder or skip?"
 - "Ready to proceed?"
 
-If user wants changes:
-- "modify: [specific change]" - Adjust the plan
-- "different approach: [alternative]" - Rethink strategy
-- "start from phase N" - Skip earlier phases
-
 ## Document Output
 
-**ALWAYS save the plan to a file.**
+**ALWAYS save/update these files:**
 
-Path: `docs/features/[feature-name]/03-plan.md`
-
-Use the same `[feature-name]` directory as previous documents.
-If starting fresh, derive the name from the feature topic in kebab-case.
+1. **Update** `docs/features/[feature-name]/02-decisions.md` — Append architecture decisions + pseudo-code
+2. **Create** `docs/features/[feature-name]/03-plan.md` — Implementation plan
 
 ```markdown
 # Implementation Plan: [Feature Name]
 
 **Status:** Draft | Approved
 **Created:** YYYY-MM-DD
-**Spec:** [link to 01-spec.md]
+**Spec:** ./01-spec.md
 
 ---
 [plan content]
@@ -132,20 +209,18 @@ If starting fresh, derive the name from the feature topic in kebab-case.
 After saving, the feature folder should look like:
 ```
 docs/features/[feature-name]/
-├── 01-spec.md            ← /brainstorm
-├── 02-decisions.md       ← /brainstorm
-└── 03-plan.md            ← /plan
+├── 01-spec.md            ← /brainstorm (what to build)
+├── 02-decisions.md       ← /brainstorm + /plan (decisions + architecture)
+└── 03-plan.md            ← /plan (implementation phases)
 ```
 
 ## Critical Boundaries
 
 **STOP AFTER PLANNING.**
 
-This command produces an IMPLEMENTATION PLAN ONLY.
-
-**Will NOT:**
+This command produces architecture design + implementation plan. It does NOT:
 - Write implementation code
-- Create files or modify the codebase (except the plan document)
+- Create source files or modify the codebase (except plan/decisions documents)
 - Skip user confirmation
 - Proceed without explicit approval
 
@@ -156,8 +231,10 @@ This command produces an IMPLEMENTATION PLAN ONLY.
 
 ## Plan Quality Checklist
 
-- [ ] Requirements restated and confirmed
+- [ ] Spec reviewed and summarized
 - [ ] Existing codebase analyzed (not guessing)
+- [ ] Architecture designed with pseudo-code
+- [ ] Architecture decisions appended to 02-decisions.md
 - [ ] Risks identified with mitigation strategies
 - [ ] Phases are incremental and independently testable
 - [ ] Dependencies between phases are explicit
