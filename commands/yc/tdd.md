@@ -17,11 +17,13 @@ Implement features using strict test-driven development methodology.
 ## When to Use
 
 Use `/yc:tdd` when:
-- Implementing new features or functions
-- Adding new components with logic
+- Complex business logic or data transformations
+- Utility functions and pure logic
 - Fixing bugs (write test that reproduces bug first)
 - Refactoring existing code (write characterization tests first)
-- Building critical business logic
+- Critical paths (auth, payments, data integrity)
+
+**For general implementation (UI, pages, styling), use `/yc:impl` instead.**
 
 ## TDD Cycle
 
@@ -181,7 +183,8 @@ If below 80%, add tests for uncovered branches.
 
 - `/yc:brainstorm` or `/yc:spec` first to understand what to build
 - `/yc:plan` to break work into phases
-- `/yc:tdd` to implement each phase
+- `/yc:impl` for general implementation (UI, pages, styling)
+- `/yc:tdd` for logic-heavy implementation (test-first)
 - `/yc:build-fix` if build errors occur during implementation
 - `/yc:code-review` to review completed implementation
 - `/yc:test-coverage` to verify overall coverage

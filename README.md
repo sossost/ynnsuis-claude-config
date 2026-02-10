@@ -22,7 +22,8 @@ Claude Code `.claude` folder template — from idea to shipping code.
 │       ├── brainstorm.md  # Ideation → Spec + Decisions
 │       ├── spec.md        # Revise existing spec
 │       ├── plan.md        # Architecture + Implementation plan
-│       ├── tdd.md         # Test-driven implementation
+│       ├── impl.md        # Plan-based implementation (default)
+│       ├── tdd.md         # Test-driven implementation (logic-heavy)
 │       ├── code-review.md # Code quality gate
 │       ├── build-fix.md   # Build error resolution
 │       ├── e2e.md         # E2E test generation
@@ -84,14 +85,15 @@ cp templates/project-claude.md my-project/.claude/CLAUDE.md
 The template is designed around an **Idea → Ship** workflow:
 
 ```
-/yc:brainstorm  →  /yc:plan  →  /yc:tdd  →  /yc:code-review
+/yc:brainstorm  →  /yc:plan  →  /yc:impl  →  /yc:code-review
 ```
 
 | Phase | Command | Output |
 |-------|---------|--------|
 | Discovery | `/yc:brainstorm` | `docs/features/*/01-spec.md` + `02-decisions.md` |
 | Planning | `/yc:plan` | `docs/features/*/03-plan.md` + updates `02-decisions.md` |
-| Implementation | `/yc:tdd` | Code + tests |
+| Implementation | `/yc:impl` | Code + tests (plan 따라 phase별 구현) |
+| Implementation | `/yc:tdd` | Code + tests (test-first, 로직 위주) |
 | Quality | `/yc:code-review` | Review report |
 | Revision | `/yc:spec` | Update existing spec + decisions |
 

@@ -225,7 +225,8 @@ This command produces architecture design + implementation plan. It does NOT:
 - Proceed without explicit approval
 
 **Next Steps:**
-- `/yc:tdd` - Implement using test-driven development
+- `/yc:impl` - Implement following the plan (default)
+- `/yc:tdd` - Implement with strict test-first approach (for logic-heavy code)
 - `/yc:build-fix` - Fix build errors during implementation
 - `/yc:code-review` - Review completed implementation
 

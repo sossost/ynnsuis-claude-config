@@ -38,11 +38,12 @@ After spec approval:
 
 ### 5. Implementation
 
-Follow TDD: write tests first, then implement, then refactor.
-- One task at a time, verify before moving on
+Implement following the plan, phase by phase.
+- `/yc:impl` for general implementation (UI, pages, styling)
+- `/yc:tdd` for logic-heavy code (test-first approach)
+- One phase at a time, verify before moving on
 - Commit incrementally with clear messages
 - Run code-reviewer agent after significant changes
-- Never break existing functionality
 
 ### 6. Review & Iteration
 
