@@ -160,6 +160,40 @@ Write testable acceptance criteria:
 |----------|--------------|--------|------|
 ```
 
+## Document Output
+
+**ALWAYS save the spec and decisions to files.**
+
+Path: `docs/features/[feature-name]/`
+- `02-decisions.md` — All technical decisions made during spec creation
+- `03-spec.md` — The full feature specification
+
+Use the same `[feature-name]` directory as the requirements document from `/brainstorm`.
+If no brainstorm was run, derive the name from the feature topic in kebab-case.
+
+**Decisions document format:**
+```markdown
+# Decisions: [Feature Name]
+
+**Updated:** YYYY-MM-DD
+
+| # | Decision | Options Considered | Chosen | Reason |
+|---|----------|--------------------|--------|--------|
+| 1 | [topic] | A, B, C | B | [why] |
+```
+
+**Spec document format:**
+```markdown
+# Feature Spec: [Feature Name]
+
+**Status:** Draft | In Review | Approved
+**Created:** YYYY-MM-DD
+**Requirements:** [link to 01-requirements.md]
+
+---
+[spec content]
+```
+
 ## Critical Boundaries
 
 **STOP AFTER SPECIFICATION.**

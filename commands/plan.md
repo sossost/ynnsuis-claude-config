@@ -109,6 +109,35 @@ If user wants changes:
 - "different approach: [alternative]" - Rethink strategy
 - "start from phase N" - Skip earlier phases
 
+## Document Output
+
+**ALWAYS save the plan to a file.**
+
+Path: `docs/features/[feature-name]/04-plan.md`
+
+Use the same `[feature-name]` directory as previous documents.
+If starting fresh, derive the name from the feature topic in kebab-case.
+
+```markdown
+# Implementation Plan: [Feature Name]
+
+**Status:** Draft | Approved
+**Created:** YYYY-MM-DD
+**Spec:** [link to 03-spec.md]
+
+---
+[plan content]
+```
+
+After saving, the feature folder should look like:
+```
+docs/features/[feature-name]/
+├── 01-requirements.md    ← /brainstorm
+├── 02-decisions.md       ← /spec (decisions)
+├── 03-spec.md            ← /spec (specification)
+└── 04-plan.md            ← /plan
+```
+
 ## Critical Boundaries
 
 **STOP AFTER PLANNING.**
@@ -117,7 +146,7 @@ This command produces an IMPLEMENTATION PLAN ONLY.
 
 **Will NOT:**
 - Write implementation code
-- Create files or modify the codebase
+- Create files or modify the codebase (except the plan document)
 - Skip user confirmation
 - Proceed without explicit approval
 

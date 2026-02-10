@@ -26,7 +26,7 @@ When a decision point arises:
 - Present options with trade-offs (pros, cons, effort, risk)
 - Let the user decide — never assume
 - Record the decision, rationale, and alternatives considered
-- Use a `decisions/` directory or inline in spec documents
+- Save to the feature's `02-decisions.md` file
 
 ### 3. Specification
 
@@ -124,6 +124,23 @@ Use specialized agents proactively:
 | Code maintenance | refactor-cleaner | Dead code removal |
 
 Launch independent agents in parallel. Never run sequentially what can run concurrently.
+
+## Feature Documentation
+
+All pre-implementation documents are saved to `docs/features/[feature-name]/`:
+
+```
+docs/features/theme-system/
+├── 01-requirements.md    ← /brainstorm output
+├── 02-decisions.md       ← Technical decisions log
+├── 03-spec.md            ← /spec output
+└── 04-plan.md            ← /plan output
+```
+
+- `[feature-name]` is derived from the topic in kebab-case
+- Documents are created automatically by `/brainstorm`, `/spec`, `/plan` commands
+- Each document includes status, date, and links to related documents
+- This is the single source of truth for what we agreed to build
 
 ## Rules
 

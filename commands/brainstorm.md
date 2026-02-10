@@ -87,6 +87,28 @@ Present the requirements document and ask:
 - "Anything missing or wrong?"
 - "Ready to move to /spec or /plan?"
 
+## Document Output
+
+**ALWAYS save the final requirements document to a file.**
+
+Path: `docs/features/[feature-name]/01-requirements.md`
+
+- Derive `[feature-name]` from the topic in kebab-case (e.g., "dark mode theme system" → `theme-system`)
+- Create the directory if it doesn't exist
+- Save AFTER user confirms the requirements are correct
+- Include metadata at the top:
+
+```markdown
+# Requirements: [Feature Name]
+
+**Status:** Draft | Confirmed
+**Created:** YYYY-MM-DD
+**Author:** (brainstorm session)
+
+---
+[requirements content]
+```
+
 ## Critical Boundaries
 
 **STOP AFTER REQUIREMENTS DISCOVERY.**
