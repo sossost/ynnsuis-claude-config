@@ -224,11 +224,23 @@ This command produces architecture design + implementation plan. It does NOT:
 - Skip user confirmation
 - Proceed without explicit approval
 
-**Next Steps:**
-- `/yc:impl` - Implement following the plan (default)
-- `/yc:tdd` - Implement with strict test-first approach (for logic-heavy code)
-- `/yc:build-fix` - Fix build errors during implementation
-- `/yc:code-review` - Review completed implementation
+## Handoff Message
+
+**After plan is saved and user confirms, ALWAYS show this message:**
+
+```
+✅ 구현 계획 완료
+
+docs/features/[feature-name]/
+├── 01-spec.md
+├── 02-decisions.md  (아키텍처 추가됨)
+└── 03-plan.md
+
+👉 다음 단계: /yc:impl 을 입력하여 구현을 시작하세요.
+   (plan 따라 phase별 구현 → 테스트 → 커밋)
+
+   로직 위주 코드라면 /yc:tdd 로 테스트 먼저 작성할 수도 있습니다.
+```
 
 ## Plan Quality Checklist
 

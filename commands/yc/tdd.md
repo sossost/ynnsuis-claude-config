@@ -189,6 +189,21 @@ If below 80%, add tests for uncovered branches.
 - `/yc:code-review` to review completed implementation
 - `/yc:test-coverage` to verify overall coverage
 
+## Handoff Message
+
+**After implementation is complete, ALWAYS show this message:**
+
+```
+✅ TDD 구현 완료 (coverage: [N]%)
+
+👉 다음 단계: /yc:code-review 를 입력하여 코드 리뷰를 받으세요.
+   (보안, 코드 품질, 코딩 표준 검증)
+
+   필요시:
+   - /yc:test-coverage — 전체 커버리지 확인
+   - /yc:e2e — E2E 테스트 추가
+```
+
 ## Related Agent
 
 This command invokes the `tdd-guide` agent.

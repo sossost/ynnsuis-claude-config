@@ -117,6 +117,25 @@ Use `/yc:code-review` when:
 - `/yc:build-fix` if review changes break the build
 - `/yc:test-coverage` to verify test coverage
 
+## Handoff Message
+
+**After review is complete, ALWAYS show this message:**
+
+If APPROVED:
+```
+✅ 코드 리뷰 통과
+
+👉 커밋하고 PR을 생성할 수 있습니다.
+   필요시: /yc:e2e — E2E 테스트 추가
+```
+
+If REQUEST CHANGES:
+```
+⚠️ 코드 리뷰: 수정 필요 ([N]건)
+
+수정 후 다시 /yc:code-review 를 입력하여 재검토 받으세요.
+```
+
 ## Related Agent
 
 This command invokes the `code-reviewer` agent.

@@ -283,9 +283,21 @@ This command produces spec + decisions documents. It does NOT:
 - Include Design Rationale or implementation explanation sections
 - Include architecture patterns, pseudo-code, or folder structure
 
-**Next Steps:**
-- `/yc:plan` - Create implementation plan (architecture + pseudo-code + phases)
-- `/yc:impl` - Implement following the plan (default, after /yc:plan)
-- `/yc:tdd` - Implement with strict test-first (logic-heavy code only)
-- `/yc:spec` - Revise spec if requirements change
-- `/yc:brainstorm` again - Start fresh if direction changed
+## Handoff Message
+
+**After documents are saved, ALWAYS show this message:**
+
+```
+✅ 문서 생성 완료
+
+docs/features/[feature-name]/
+├── 01-spec.md
+└── 02-decisions.md
+
+👉 다음 단계: /yc:plan 을 입력하여 구현 계획을 생성하세요.
+   (코드베이스 분석 → 아키텍처 설계 → 단계별 구현 계획)
+```
+
+**Other available commands:**
+- `/yc:spec` - 스펙 수정이 필요할 때
+- `/yc:brainstorm` - 처음부터 다시 할 때

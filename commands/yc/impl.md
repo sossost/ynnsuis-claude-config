@@ -139,8 +139,17 @@ feat(theme): add accessibility and transitions (Phase 4/4)
                           You are here
 ```
 
-**Next Steps:**
-- `/yc:code-review` - Review completed implementation
-- `/yc:test-coverage` - Check coverage gaps
-- `/yc:e2e` - Add E2E tests for critical flows
-- `/yc:build-fix` - If build breaks during implementation
+## Handoff Message
+
+**After all phases are complete, ALWAYS show this message:**
+
+```
+✅ 구현 완료 ([N]/[N] phases)
+
+👉 다음 단계: /yc:code-review 를 입력하여 코드 리뷰를 받으세요.
+   (보안, 코드 품질, 코딩 표준 검증)
+
+   필요시:
+   - /yc:test-coverage — 테스트 커버리지 확인
+   - /yc:e2e — E2E 테스트 추가
+```
