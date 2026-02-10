@@ -462,10 +462,13 @@ src/
 
 ### Naming
 
-- **Files**: `kebab-case.ts` (`user-profile.tsx`, `format-currency.ts`)
-- **Components**: `PascalCase` (`UserProfile`, `PaymentForm`)
-- **Hooks**: `useCamelCase` (`useAuth`, `useDebounce`)
-- **Utilities**: `camelCase` (`formatCurrency`, `parseDate`)
+- **Component files**: `PascalCase.tsx` (`ThemeToggle.tsx`, `UserProfile.tsx`)
+- **Utility/helper files**: `camelCase.ts` (`formatCurrency.ts`, `parseDate.ts`)
+- **Hook files**: `useCamelCase.ts` (`useTheme.ts`, `useAuth.ts`)
+- **Type files**: `camelCase.ts` (`types.ts`, `themeTypes.ts`)
+- **Component names**: `PascalCase` (`UserProfile`, `PaymentForm`)
+- **Hook names**: `useCamelCase` (`useAuth`, `useDebounce`)
+- **Utility names**: `camelCase` (`formatCurrency`, `parseDate`)
 - **Constants**: `UPPER_SNAKE_CASE` (`MAX_RETRIES`, `API_BASE_URL`)
 - **Types**: `PascalCase` (`User`, `ApiResponse<T>`)
 

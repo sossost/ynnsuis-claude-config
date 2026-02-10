@@ -61,19 +61,29 @@ Starting Phase 1: Foundation
 - Match existing codebase patterns
 - Write clean, readable code following project standards
 - **Do NOT write tests** — focus on implementation only
-- Follow naming conventions from `rules/coding-style.md`:
-  - Components: `PascalCase` (e.g., `ThemeToggle`, `ListItem`)
-  - Files: `kebab-case.ts` (e.g., `theme-toggle.tsx`)
-  - Hooks: `useCamelCase` (e.g., `useTheme`)
-  - Types: `PascalCase` (e.g., `ThemeMode`, `ToggleProps`)
+- Follow naming conventions:
+  - Component files: `PascalCase.tsx` (e.g., `ThemeToggle.tsx`, `ListItem.tsx`)
+  - Utility/helper files: `camelCase.ts` (e.g., `formatCurrency.ts`, `parseDate.ts`)
+  - Hook files: `useCamelCase.ts` (e.g., `useTheme.ts`)
+  - Type/interface files: `camelCase.ts` (e.g., `types.ts`, `themeTypes.ts`)
+  - Component names: `PascalCase` (e.g., `ThemeToggle`, `ListItem`)
+  - Hook names: `useCamelCase` (e.g., `useTheme`)
+  - Type names: `PascalCase` (e.g., `ThemeMode`, `ToggleProps`)
 
 #### c. Verify
-Run the phase's verification criteria from the plan:
+Run type check after every phase. **Fix all errors before moving on.**
+
 ```
-Phase 1 Verify: Types compile, test scaffold runs
-→ Running tsc... ✓
-→ Running tests... ✓
+→ Running tsc...
+  ✓ No errors — proceed to commit
+
+  ✗ Found 3 errors — fix immediately, do NOT move to next phase
+    → Fix each error
+    → Re-run tsc
+    → Repeat until clean
 ```
+
+Also run the phase's verification criteria from the plan if specified.
 
 #### d. Commit
 ```
