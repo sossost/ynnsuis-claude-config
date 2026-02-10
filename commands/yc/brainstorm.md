@@ -49,20 +49,27 @@ Keep asking until you have a clear picture of:
 
 ### Phase 2: Decide (Resolve Technical Choices)
 
-Once the problem is clear, surface decision points:
+Once the problem is clear, surface decision points.
+
+**ALWAYS mark a recommended option.** Use context (project scale, existing stack, common patterns) to pick the best default. The user can override.
 
 ```
 User: "Theme should persist"
 You: "Where should theme preference be stored?
-      Option A: localStorage — simple, client-only, no account sync
-      Option B: Database — syncs across devices, needs auth
-      Option C: Cookie — works with SSR, limited size
-      Which fits your needs?"
+
+      A: localStorage (Recommended) — simple, client-only, no account sync
+      B: Database — syncs across devices, needs auth
+      C: Cookie — works with SSR, limited size
+
+      → A를 추천합니다. 클라이언트 전용 프로젝트에서 가장 단순하고 충분합니다.
+        다른 옵션을 원하시면 말씀해주세요."
 ```
 
 For each decision:
-- Present 2-3 options with pros/cons
-- Let the user decide — never assume
+- Present 2-3 options with brief pros/cons
+- **Always include a recommended option with (Recommended) label**
+- Explain why the recommendation fits this project
+- Let the user decide — recommendation is a starting point, not a mandate
 - Record the decision with reasoning
 
 **Decision scope for this phase (user-level choices):**
