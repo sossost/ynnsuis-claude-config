@@ -60,7 +60,12 @@ Starting Phase 1: Foundation
 - Follow the architecture in 02-decisions.md
 - Match existing codebase patterns
 - Write clean, readable code following project standards
-- Add tests for logic-heavy code (not mandatory test-first, but tests are required)
+- **Do NOT write tests** — focus on implementation only
+- Follow naming conventions from `rules/coding-style.md`:
+  - Components: `PascalCase` (e.g., `ThemeToggle`, `ListItem`)
+  - Files: `kebab-case.ts` (e.g., `theme-toggle.tsx`)
+  - Hooks: `useCamelCase` (e.g., `useTheme`)
+  - Types: `PascalCase` (e.g., `ThemeMode`, `ToggleProps`)
 
 #### c. Verify
 Run the phase's verification criteria from the plan:
@@ -90,18 +95,14 @@ After all phases complete:
 
 ## Testing Approach
 
-Unlike `/yc:tdd`, this command does NOT enforce test-first. But tests are still required:
+**This command focuses on implementation. Do NOT write tests unless explicitly asked.**
 
-| Code Type | Testing Approach |
-|-----------|-----------------|
-| Business logic / utils | Write tests (can be after implementation) |
-| API endpoints | Write integration tests |
-| UI components | Write tests for behavior, not rendering |
-| Styling / layout | Visual verification, no unit tests needed |
-| Critical paths | Consider `/yc:tdd` instead |
+Tests belong in a separate step:
+- After impl is done → `/yc:code-review` for quality check
+- If coverage is needed → `/yc:test-coverage` to identify gaps
+- For critical logic → `/yc:tdd` to add tests with test-first approach
 
-**Minimum:** Every phase should have some test coverage.
-**Target:** 80%+ overall coverage by the end.
+**Exception:** If the plan explicitly includes test tasks in a phase, follow the plan.
 
 ## Incremental Commits
 
