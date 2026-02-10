@@ -20,20 +20,13 @@ When the user shares an idea (even vague):
 - Suggest comparable patterns or prior art when relevant
 - Summarize what you understand back to the user before proceeding
 
-### 2. Decision Documentation
+### 2. Spec & Decisions (via /brainstorm)
 
-When a decision point arises:
-- Present options with trade-offs (pros, cons, effort, risk)
-- Let the user decide — never assume
-- Record the decision, rationale, and alternatives considered
-- Save to the feature's `02-decisions.md` file
-
-### 3. Specification
-
-Before any implementation:
-- Write a spec document covering: purpose, requirements, scope boundaries, data model, API contracts, UI behavior, error handling
+Through Socratic dialogue:
+- Explore the problem, clarify scope, surface decision points
+- Present options with trade-offs — let the user decide
+- Produce two documents: `01-spec.md` (what to build) and `02-decisions.md` (why)
 - The spec is the contract. If it's not in the spec, it's not in scope.
-- Keep specs concise but unambiguous
 
 ### 4. Task Breakdown & Planning
 
@@ -131,15 +124,15 @@ All pre-implementation documents are saved to `docs/features/[feature-name]/`:
 
 ```
 docs/features/theme-system/
-├── 01-requirements.md    ← /brainstorm output
-├── 02-decisions.md       ← Technical decisions log
-├── 03-spec.md            ← /spec output
-└── 04-plan.md            ← /plan output
+├── 01-spec.md            ← /brainstorm output (what to build + behavior)
+├── 02-decisions.md       ← /brainstorm output (technical choices + reasoning)
+└── 03-plan.md            ← /plan output (implementation phases)
 ```
 
 - `[feature-name]` is derived from the topic in kebab-case
-- Documents are created automatically by `/brainstorm`, `/spec`, `/plan` commands
-- Each document includes status, date, and links to related documents
+- `/brainstorm` produces both spec and decisions through a single dialogue
+- `/spec` is for revising existing specs when requirements change
+- `/plan` creates the implementation plan after spec is confirmed
 - This is the single source of truth for what we agreed to build
 
 ## Rules

@@ -1,222 +1,96 @@
 ---
-description: "Create a detailed feature specification from requirements. Defines behavior, acceptance criteria, API contracts, and edge cases. Does NOT implement."
+description: "Review and revise an existing feature spec. Use when requirements change, scope shifts, or the spec needs updating after initial brainstorm."
 ---
 
 # Spec Command
 
-Turn requirements into a precise, implementation-ready specification.
+Review, revise, or extend an existing feature specification.
 
 ## What This Command Does
 
-1. **Review Requirements** - Understand what needs to be built
-2. **Define Behavior** - Specify exactly how the feature works
-3. **Write Acceptance Criteria** - Define what "done" means
-4. **Design Interfaces** - API contracts, component props, data shapes
-5. **Map Edge Cases** - Document every known edge case and how to handle it
-6. **Produce Spec Document** - Generate a complete feature specification
+1. **Read Existing Spec** - Load the current 01-spec.md and 02-decisions.md
+2. **Identify Changes** - Compare current spec against new requirements or feedback
+3. **Update Spec** - Revise behavior, acceptance criteria, or scope
+4. **Update Decisions** - Add or modify technical decisions
+5. **Save Updates** - Overwrite existing documents with updated versions
 
 ## When to Use
 
 Use `/spec` when:
-- Requirements are defined (after `/brainstorm` or from a product brief)
-- You need a clear contract before implementation
-- Multiple people will work on the feature
-- The feature touches multiple systems or components
-- You want to catch design issues before writing code
+- Requirements changed after initial brainstorm
+- User feedback requires spec updates
+- Scope needs to expand or contract
+- A decision needs to be revisited
+- Adding detail to an underspecified area
+
+**For new features, use `/brainstorm` instead.** This command is for revisions.
 
 ## How It Works
 
-### Step 1: Requirements Review
+### Step 1: Load Current State
 
-Read the requirements and restate them. Identify:
-- Core user stories
-- Success metrics
-- Known constraints
-- Dependencies on other systems
-
-### Step 2: Behavior Specification
-
-For each user story, define the exact behavior:
-
-```markdown
-### Feature: [Name]
-
-#### Scenario: [Happy Path]
-- **Given** [initial state]
-- **When** [user action or system event]
-- **Then** [expected outcome]
-
-#### Scenario: [Error Case]
-- **Given** [initial state]
-- **When** [error condition]
-- **Then** [error handling behavior]
+Read the existing documents:
+```
+docs/features/[feature-name]/
+├── 01-spec.md
+└── 02-decisions.md
 ```
 
-### Step 3: Interface Design
+Summarize the current spec to the user:
+- Core feature description
+- Key behaviors
+- Current decisions
+- Scope boundaries
 
-Define the contracts between components:
+### Step 2: Identify What Changed
 
-```typescript
-// API Contract
-POST /api/[resource]
-Request:  { field: string; count: number }
-Response: { id: string; status: 'created' | 'pending' }
-Errors:   400 (validation), 401 (auth), 409 (conflict)
+Ask the user what needs updating:
+- "What changed since we wrote this spec?"
+- "Which parts need revision?"
+- "Any new requirements or constraints?"
 
-// Component Interface
-interface Props {
-  items: Item[]
-  onSelect: (id: string) => void
-  isLoading?: boolean
-}
+### Step 3: Revise
 
-// Data Shape
-interface Entity {
-  id: string
-  name: string
-  status: 'active' | 'inactive' | 'archived'
-  createdAt: Date
-  updatedAt: Date
-}
-```
+For each change:
+- Show what the spec currently says
+- Propose the updated version
+- Get user confirmation before applying
 
-### Step 4: Edge Cases & Error Handling
+If a decision needs revisiting:
+- Show the original decision and reasoning
+- Present new options if the landscape changed
+- Record the updated decision with new reasoning
 
-Document every edge case:
+### Step 4: Save
 
-| Scenario | Expected Behavior |
-|----------|------------------|
-| Empty state (no data) | Show empty state UI with CTA |
-| Network failure | Show error toast, retain user input |
-| Concurrent edits | Last-write-wins with conflict notification |
-| Max limit reached | Disable action, show limit message |
-| Invalid input | Inline validation with specific error message |
-
-### Step 5: Acceptance Criteria
-
-Write testable acceptance criteria:
+Update both documents in place. Add a revision note:
 
 ```markdown
-## Acceptance Criteria
-
-- [ ] User can [action] and see [result]
-- [ ] Error message appears when [condition]
-- [ ] Loading state shows during [async operation]
-- [ ] Works on mobile viewport (375px+)
-- [ ] Keyboard accessible (Tab, Enter, Escape)
-- [ ] Screen reader announces [state changes]
-- [ ] Performance: [operation] completes in < [N]ms
+**Status:** Revised
+**Created:** [original date]
+**Revised:** YYYY-MM-DD
+**Changes:** [brief summary of what changed]
 ```
 
-## Spec Document Template
+## Document Path
 
-```markdown
-# Feature Spec: [Name]
-
-**Status:** Draft | In Review | Approved
-**Author:** [name]
-**Date:** YYYY-MM-DD
-**Requires:** [dependencies]
-
-## Overview
-[1-2 sentence summary of what this feature does and why]
-
-## User Stories
-- As a [user], I want to [action] so that [benefit]
-
-## Behavior
-
-### Happy Path
-[Step-by-step flow]
-
-### Error Cases
-[Each error scenario and handling]
-
-### Edge Cases
-[Table of edge cases]
-
-## Interface Design
-
-### API
-[Endpoints, request/response shapes, error codes]
-
-### Components
-[Props interfaces, state management]
-
-### Data Model
-[Entity shapes, relationships]
-
-## Acceptance Criteria
-[Testable checklist]
-
-## Out of Scope
-[Explicitly excluded items]
-
-## Open Questions
-[Unresolved decisions]
-
-## Decision Log
-| Decision | Chosen Option | Reason | Date |
-|----------|--------------|--------|------|
+Same path as the original:
 ```
-
-## Document Output
-
-**ALWAYS save the spec and decisions to files.**
-
-Path: `docs/features/[feature-name]/`
-- `02-decisions.md` — All technical decisions made during spec creation
-- `03-spec.md` — The full feature specification
-
-Use the same `[feature-name]` directory as the requirements document from `/brainstorm`.
-If no brainstorm was run, derive the name from the feature topic in kebab-case.
-
-**Decisions document format:**
-```markdown
-# Decisions: [Feature Name]
-
-**Updated:** YYYY-MM-DD
-
-| # | Decision | Options Considered | Chosen | Reason |
-|---|----------|--------------------|--------|--------|
-| 1 | [topic] | A, B, C | B | [why] |
-```
-
-**Spec document format:**
-```markdown
-# Feature Spec: [Feature Name]
-
-**Status:** Draft | In Review | Approved
-**Created:** YYYY-MM-DD
-**Requirements:** [link to 01-requirements.md]
-
----
-[spec content]
+docs/features/[feature-name]/
+├── 01-spec.md          ← Updated
+└── 02-decisions.md     ← Updated (new rows added)
 ```
 
 ## Critical Boundaries
 
-**STOP AFTER SPECIFICATION.**
+**STOP AFTER SPEC REVISION.**
 
-This command produces a SPEC DOCUMENT ONLY.
-
-**Will NOT:**
+This command updates spec documents only. It does NOT:
 - Write implementation code
-- Create file structure or scaffolding
-- Run tests or builds
-- Make decisions the user hasn't approved
+- Modify existing implementation to match new spec
+- Create an implementation plan
 
 **Next Steps:**
-- `/plan` - Create phased implementation plan from this spec
-- `/tdd` - Implement with test-driven development
-- `/spec` again - Revise if spec needs changes
-
-## Quality Checklist
-
-Before finalizing a spec:
-- [ ] Every user story has acceptance criteria
-- [ ] Every API endpoint has request/response shapes and error codes
-- [ ] Every edge case is documented with expected behavior
-- [ ] All decisions are logged with reasoning
-- [ ] Out-of-scope is explicitly defined
-- [ ] No ambiguous language ("should", "maybe", "probably")
+- `/plan` - Re-plan implementation if spec changed significantly
+- `/tdd` - Implement the updated spec
+- `/brainstorm` - Start fresh if the feature direction changed fundamentally

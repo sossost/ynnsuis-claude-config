@@ -113,7 +113,7 @@ If user wants changes:
 
 **ALWAYS save the plan to a file.**
 
-Path: `docs/features/[feature-name]/04-plan.md`
+Path: `docs/features/[feature-name]/03-plan.md`
 
 Use the same `[feature-name]` directory as previous documents.
 If starting fresh, derive the name from the feature topic in kebab-case.
@@ -123,7 +123,7 @@ If starting fresh, derive the name from the feature topic in kebab-case.
 
 **Status:** Draft | Approved
 **Created:** YYYY-MM-DD
-**Spec:** [link to 03-spec.md]
+**Spec:** [link to 01-spec.md]
 
 ---
 [plan content]
@@ -132,10 +132,9 @@ If starting fresh, derive the name from the feature topic in kebab-case.
 After saving, the feature folder should look like:
 ```
 docs/features/[feature-name]/
-├── 01-requirements.md    ← /brainstorm
-├── 02-decisions.md       ← /spec (decisions)
-├── 03-spec.md            ← /spec (specification)
-└── 04-plan.md            ← /plan
+├── 01-spec.md            ← /brainstorm
+├── 02-decisions.md       ← /brainstorm
+└── 03-plan.md            ← /plan
 ```
 
 ## Critical Boundaries

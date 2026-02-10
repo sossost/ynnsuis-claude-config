@@ -18,8 +18,8 @@ Claude Code `.claude` folder template — from idea to shipping code.
 │   ├── doc-updater.md
 │   └── refactor-cleaner.md
 ├── commands/              # 10 workflow commands
-│   ├── brainstorm.md      # Ideation → Requirements
-│   ├── spec.md            # Requirements → Specification
+│   ├── brainstorm.md      # Ideation → Spec + Decisions
+│   ├── spec.md            # Revise existing spec
 │   ├── plan.md            # Specification → Implementation plan
 │   ├── tdd.md             # Test-driven implementation
 │   ├── code-review.md     # Code quality gate
@@ -83,17 +83,16 @@ cp templates/project-claude.md my-project/.claude/CLAUDE.md
 The template is designed around an **Idea → Ship** workflow:
 
 ```
-/brainstorm  →  /spec  →  /plan  →  /tdd  →  /code-review
+/brainstorm  →  /plan  →  /tdd  →  /code-review
 ```
 
 | Phase | Command | Output |
 |-------|---------|--------|
-| Ideation | `/brainstorm` | `docs/features/*/01-requirements.md` |
-| Decisions | `/spec` | `docs/features/*/02-decisions.md` |
-| Specification | `/spec` | `docs/features/*/03-spec.md` |
-| Planning | `/plan` | `docs/features/*/04-plan.md` |
+| Discovery | `/brainstorm` | `docs/features/*/01-spec.md` + `02-decisions.md` |
+| Planning | `/plan` | `docs/features/*/03-plan.md` |
 | Implementation | `/tdd` | Code + tests |
 | Quality | `/code-review` | Review report |
+| Revision | `/spec` | Update existing spec + decisions |
 
 ## Code Quality
 
