@@ -42,6 +42,22 @@ else
 fi
 
 # ============================================================
+# Clean up old non-namespaced commands (pre-yc: migration)
+# ============================================================
+
+OLD_COMMANDS="brainstorm.md spec.md plan.md tdd.md impl.md code-review.md build-fix.md e2e.md test-coverage.md refactor-clean.md update-docs.md help.md"
+CLEANED=0
+for cmd in $OLD_COMMANDS; do
+  if [ -f "$TARGET_DIR/commands/$cmd" ]; then
+    rm -f "$TARGET_DIR/commands/$cmd"
+    CLEANED=$((CLEANED + 1))
+  fi
+done
+if [ $CLEANED -gt 0 ]; then
+  info "Cleaned up $CLEANED old non-namespaced commands (migrated to yc:)"
+fi
+
+# ============================================================
 # Install template files
 # ============================================================
 

@@ -17,8 +17,8 @@ Claude Code `.claude` folder template — from idea to shipping code.
 │   ├── e2e-runner.md
 │   ├── doc-updater.md
 │   └── refactor-cleaner.md
-├── commands/              # 11 workflow commands
-│   └── yc/               # 11 workflow commands (yc: namespace)
+├── commands/
+│   └── yc/               # 12 workflow commands (yc: namespace)
 │       ├── brainstorm.md  # Ideation → Spec + Decisions
 │       ├── spec.md        # Revise existing spec
 │       ├── plan.md        # Architecture + Implementation plan
@@ -29,7 +29,8 @@ Claude Code `.claude` folder template — from idea to shipping code.
 │       ├── e2e.md         # E2E test generation
 │       ├── test-coverage.md # Coverage analysis
 │       ├── refactor-clean.md # Dead code removal
-│       └── update-docs.md # Documentation sync
+│       ├── update-docs.md # Documentation sync
+│       └── help.md        # Quick reference
 ├── rules/                 # 8 coding rules
 │   ├── coding-style.md    # Toss-level code quality standard
 │   ├── security.md        # OWASP, input validation, secrets
@@ -52,7 +53,7 @@ Claude Code `.claude` folder template — from idea to shipping code.
 ## Install
 
 ```bash
-git clone https://github.com/sossost/claude-config.git
+git clone https://github.com/sossost/ynnsuis-claude-config.git
 cd claude-config
 ./install.sh
 ```
