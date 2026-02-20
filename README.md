@@ -18,8 +18,9 @@ Claude Code `.claude` folder template — from idea to shipping code.
 │   ├── doc-updater.md
 │   └── refactor-cleaner.md
 ├── commands/
-│   └── yc/               # 12 workflow commands (yc: namespace)
+│   └── yc/               # 13 workflow commands (yc: namespace)
 │       ├── brainstorm.md  # Ideation → Spec + Decisions
+│       ├── design-to-spec.md # Figma Design → Spec + Decisions
 │       ├── spec.md        # Revise existing spec
 │       ├── plan.md        # Architecture + Implementation plan
 │       ├── impl.md        # Plan-based implementation (default)
@@ -92,6 +93,7 @@ The template is designed around an **Idea → Ship** workflow:
 | Phase | Command | Output |
 |-------|---------|--------|
 | Discovery | `/yc:brainstorm` | `docs/features/*/01-spec.md` + `02-decisions.md` |
+| Discovery | `/yc:design-to-spec` | `docs/features/*/01-spec.md` + `02-decisions.md` |
 | Planning | `/yc:plan` | `docs/features/*/03-plan.md` + updates `02-decisions.md` |
 | Implementation | `/yc:impl` | Code + tests (plan 따라 phase별 구현) |
 | Implementation | `/yc:tdd` | Code + tests (test-first, 로직 위주) |
