@@ -7,12 +7,19 @@ description: "Quick reference for all yc: commands and the Idea→Ship workflow.
 ## Workflow
 
 ```
+/yc:init (프로젝트 초기 설정)
+    ↓
 /yc:brainstorm ────────┐
                        ├──→ /yc:plan → /yc:impl → /yc:code-review
 /yc:design-to-spec ────┘
 ```
 
 ## Commands
+
+### Setup
+| Command | Purpose | Output |
+|---------|---------|--------|
+| `/yc:init` | 프로젝트 스캔 → CLAUDE.md 자동 생성 | `.claude/CLAUDE.md` |
 
 ### Core Workflow
 | Command | Purpose | Output |

@@ -18,7 +18,8 @@ Claude Code `.claude` folder template — from idea to shipping code.
 │   ├── doc-updater.md
 │   └── refactor-cleaner.md
 ├── commands/
-│   └── yc/               # 13 workflow commands (yc: namespace)
+│   └── yc/               # 14 workflow commands (yc: namespace)
+│       ├── init.md        # Project scan → CLAUDE.md generation
 │       ├── brainstorm.md  # Ideation → Spec + Decisions
 │       ├── design-to-spec.md # Figma Design → Spec + Decisions
 │       ├── spec.md        # Revise existing spec
@@ -77,6 +78,11 @@ Restores from the most recent backup.
 After installing, set up individual projects:
 
 ```bash
+# Option 1: Automatic (recommended)
+cd my-project
+/yc:init    # Scans project, asks a few questions, generates CLAUDE.md
+
+# Option 2: Manual
 mkdir -p my-project/.claude
 cp templates/project-claude.md my-project/.claude/CLAUDE.md
 # Edit the file to match your project's stack
