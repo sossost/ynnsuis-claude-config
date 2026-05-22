@@ -1,3 +1,12 @@
+---
+paths:
+  - "**/*.test.*"
+  - "**/*.spec.*"
+  - "**/__tests__/**"
+  - "**/test/**"
+  - "**/tests/**"
+---
+
 # Testing Requirements
 
 Tests are not overhead — they are the specification. Untested code is unfinished code.

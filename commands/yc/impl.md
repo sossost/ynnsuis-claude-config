@@ -145,22 +145,36 @@ feat(theme): add accessibility and transitions (Phase 4/4)
 ## Integration with Other Commands
 
 ```
-/yc:brainstorm → /yc:plan → /yc:impl → /yc:code-review
+/yc:brainstorm → /yc:plan → /yc:impl → (auto code-review) → PR?
                                   ↑
                           You are here
 ```
 
-## Handoff Message
+## Handoff: Automatic Code Review
 
-**After all phases are complete, ALWAYS show this message:**
+**After all phases are complete, ALWAYS do the following:**
 
+1. Show implementation summary:
 ```
 ✅ 구현 완료 ([N]/[N] phases)
 
-👉 다음 단계: /yc:code-review 를 입력하여 코드 리뷰를 받으세요.
-   (보안, 코드 품질, 코딩 표준 검증)
+🔍 코드 리뷰를 자동으로 시작합니다...
+```
 
+2. **Automatically run code review** — do NOT ask the user. Immediately invoke the `code-reviewer` agent to review all changes made during implementation. Follow the same review process as `/yc:code-review`.
+
+3. If review finds CRITICAL or HIGH issues:
+   - Fix them immediately
+   - Re-run the review until APPROVED
+
+4. After review is APPROVED, ask the user:
+```
+✅ 코드 리뷰 통과
+
+👉 PR을 생성할까요?
    필요시:
    - /yc:test-coverage — 테스트 커버리지 확인
    - /yc:e2e — E2E 테스트 추가
 ```
+
+**CRITICAL: Do NOT ask about PR creation before code review is complete and APPROVED.**

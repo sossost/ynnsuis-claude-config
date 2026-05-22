@@ -113,9 +113,17 @@ Use `/yc:code-review` when:
 
 ## Integration with Other Commands
 
+```
+/yc:brainstorm → /yc:plan → /yc:impl → (auto code-review) → PR?
+                                              ↑
+                                      You are here
+```
+
 - `/yc:tdd` to fix quality issues with tests
 - `/yc:build-fix` if review changes break the build
 - `/yc:test-coverage` to verify test coverage
+
+**Note:** This command runs automatically at the end of `/yc:impl`. It can also be invoked manually at any time.
 
 ## Handoff Message
 

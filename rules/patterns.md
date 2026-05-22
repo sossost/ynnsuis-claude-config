@@ -260,9 +260,22 @@ What problem does this solve? Who benefits? Why now?
 | Unauthorized | Redirect to login |
 
 ## Acceptance Criteria
-- [ ] User can [action] and sees [result]
-- [ ] Error state shows [message] when [condition]
-- [ ] Works on mobile viewport (375px+)
+
+Write every criterion in EARS (Easy Approach to Requirements Syntax) — each must be testable, with no vague words ("fast", "user-friendly", "intuitive"). Five patterns:
+
+| Pattern | Template | Use for |
+|---------|----------|---------|
+| Ubiquitous | THE SYSTEM SHALL [response] | Always-true behavior |
+| Event-driven | WHEN [trigger] THE SYSTEM SHALL [response] | Specific events |
+| State-driven | WHILE [state] THE SYSTEM SHALL [response] | Behavior during a state |
+| Optional feature | WHERE [feature enabled] THE SYSTEM SHALL [response] | Flags / variants |
+| Unwanted behavior | IF [bad condition] THEN THE SYSTEM SHALL [response] | Error handling |
+
+- [ ] WHEN a user submits a valid email THE SYSTEM SHALL send a reset link valid for 30 minutes
+- [ ] WHILE a reset link is unused and unexpired THE SYSTEM SHALL allow exactly one password change
+- [ ] WHERE rate limiting is enabled THE SYSTEM SHALL block more than 5 requests per email per hour
+- [ ] IF the reset link is expired THEN THE SYSTEM SHALL display a "link expired" message
+- [ ] THE SYSTEM SHALL render correctly on mobile viewport (375px+)
 
 ## Open Questions
 - [ ] Question that needs answering before implementation

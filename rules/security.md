@@ -1,3 +1,12 @@
+---
+paths:
+  - "**/*.ts"
+  - "**/*.tsx"
+  - "**/*.js"
+  - "**/*.jsx"
+  - "**/*.sql"
+---
+
 # Security Guidelines
 
 Security is not a feature — it's a constraint that applies to every line of code.
